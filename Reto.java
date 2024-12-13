@@ -30,10 +30,6 @@ public class Reto {
                 System.out.println("Escoge una pieza (solo una letra): ");
                 String elegirPieza = sc.nextLine();
 
-                System.out.println("Indica la posición: ");
-                String posicionPieza = sc.nextLine();
-
-
                 switch (elegirPieza.toUpperCase()) {
                     case "S":
                         System.out.println("Saliendo del programa en 3, 2, 1...");
@@ -41,29 +37,44 @@ public class Reto {
                         salirBucle = true;
                         break;
                     case "P":
-                        movimientoPeon(posicionPieza);
+                        movimientoPeon();
                         break;
                     case "A":
-                        movimientoAlfil(posicionPieza);
+                        movimientoAlfil(posicion());
                         break;
                     case "T":
-                        movimientoTorre(posicionPieza);
+                        movimientoTorre(posicion());
                         break;
                     case "C":
-                        movimientoCaballo(posicionPieza);
+                        movimientoCaballo(posicion());
                         break;
                     case "D":
-                        movimientoReina(posicionPieza);
+                        movimientoReina(posicion());
                         break;
                     case "R":
-                        movimientoRey(posicionPieza);
+                        movimientoRey(posicion());
                         break;
                     default:
                         System.out.println("No has escogido una de las letras correctas.");
                         System.out.println();
                 }
             }
+
         }
+    public static String posicion(){
+        System.out.println("Indica la posicion de tu ficha: ");
+        Scanner sc=new Scanner(System.in);
+        String posi=sc.nextLine();
+        do {
+            if (validarPosicion(posi)){
+                return posi;
+            }else {
+                System.out.println("Pon una posición válida:");
+                posi=sc.nextLine();
+            }
+        }while (!validarPosicion(posi));
+        return posi;
+    }
 
         public static String colorPieza (){
             Scanner sc=new Scanner(System.in);
@@ -80,19 +91,32 @@ public class Reto {
                     System.out.println(" ");
                     boo=true;
                 }else {
-                    boo=false;
                     System.out.println("Has escogido la " + colorPieza);
                     System.out.println(" ");
+                    boo=false;
                 }
             }while (boo);
         return COMOquiero;
         }
 
-        public static String movimientoPeon (String posicion) {
-           if (colorPieza().equals("B")){
+        public static int movimientoPeon () {
+          int posicion=0;
+          String color=colorPieza();
+           String posicionPeon=posicion();
+            if (color.equals("B")){
+               char letra=posicionPeon.charAt(0);
+               char num=posicionPeon.charAt(1);
+                int valo2=num+1;
+                int hola = Character.getNumericValue(valo2);
+                System.out.println(""+letra+hola);
 
-           }else if (colorPieza().equals("N")){
-
+           }
+            if (color.equals("N")){
+                char letra=posicionPeon.charAt(0);
+                char num=posicionPeon.charAt(1);
+                int valo2=num-1;
+                int hola = Character.getNumericValue(valo2);
+                System.out.println(""+letra+hola);
            }
             return posicion;
         }
@@ -121,7 +145,7 @@ public class Reto {
             return posicion;
         }
 
-        public static boolean validarPosición (String posicion) {
+        public static boolean validarPosicion (String posicion) {
             boolean posicionValida = true;
 
             if (posicion == null || posicion.length() != 2) {
