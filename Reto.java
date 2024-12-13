@@ -106,17 +106,30 @@ public class Reto {
             if (color.equals("B")){
                char letra=posicionPeon.charAt(0);
                char num=posicionPeon.charAt(1);
+                int nume =Character.getNumericValue(num);
                 int valo2=num+1;
                 int hola = Character.getNumericValue(valo2);
-                System.out.println(""+letra+hola);
-
+                if (nume == 2){
+                    System.out.println("Puede moverse a " + letra+(hola) + " y " + letra+(hola+1));
+                } else if (nume==1) {
+                    System.out.println("Posición incorrecta, el peón blanco nunca puede estar en la fila 1");
+                }else {
+                    System.out.println("Puede moverse a "+"" + letra + hola);
+                }
            }
             if (color.equals("N")){
                 char letra=posicionPeon.charAt(0);
                 char num=posicionPeon.charAt(1);
+                int hola2 =Character.getNumericValue(num);
                 int valo2=num-1;
                 int hola = Character.getNumericValue(valo2);
-                System.out.println(""+letra+hola);
+                if (hola2 == 7){
+                    System.out.println("Puede moverse a " + letra+(hola) + " y " + letra+(hola-1));
+                } else if (hola2==8) {
+                    System.out.println("Posición incorrecta, el peón negro nunca puede estar en la fila 8");
+                }else {
+                System.out.println("Puede moverse a "+ ""+letra+hola);
+                }
            }
             return posicion;
         }
