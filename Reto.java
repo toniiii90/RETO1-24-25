@@ -90,8 +90,12 @@ public class Reto {
                     System.out.println("Escoge una letra correcta");
                     System.out.println(" ");
                     boo=true;
-                }else {
-                    System.out.println("Has escogido la " + colorPieza);
+                }else if (COMOquiero.equals("B")){
+                    System.out.println("Has escogido las blancas");
+                    System.out.println(" ");
+                    boo=false;
+                }else if (COMOquiero.equals("N")){
+                    System.out.println("Has escogido las negras");
                     System.out.println(" ");
                     boo=false;
                 }
