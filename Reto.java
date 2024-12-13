@@ -11,10 +11,7 @@ public class Reto {
             System.out.println("|--------------------------------------|");
 
             Scanner sc = new Scanner(System.in);
-            //String [][] arrayTablero = new String [8][8];
 
-            String [] ArrayLetra={"a","b","c","d","e","f","g","h"};
-            int [] ArrayNum={1,2,3,4,5,6,7,8};
             System.out.println("Las piezas del ajedrez son: ");
             System.out.println("P - Peón");
             System.out.println("A - Alfíl");
@@ -117,6 +114,11 @@ public class Reto {
                     System.out.println("Puede moverse a " + letra+(hola) + " y " + letra+(hola+1));
                 } else if (nume==1) {
                     System.out.println("Posición incorrecta, el peón blanco nunca puede estar en la fila 1");
+                }else if (nume==7) {
+                    System.out.println("Avanza a "+ ""+letra+hola);
+                    System.out.println("El peón llega a la última casilla y se transforma en Dama");
+                }else if (nume>=8) {
+                    System.out.println("El peón no puede hacer el siguiente movimiento porque se sale del tablero");
                 }else {
                     System.out.println("Puede moverse a "+"" + letra + hola);
                 }
@@ -131,6 +133,11 @@ public class Reto {
                     System.out.println("Puede moverse a " + letra+(hola) + " y " + letra+(hola-1));
                 } else if (hola2==8) {
                     System.out.println("Posición incorrecta, el peón negro nunca puede estar en la fila 8");
+                }else if (hola2==2){
+                    System.out.println("Avanza a "+ ""+letra+hola);
+                    System.out.println("El peón llega a la última cassilla y se transforma en Dama");
+                }else if (hola2<=1){
+                    System.out.println("El peón no puede hacer el siguiente movimiento porque se sale del tablero");
                 }else {
                 System.out.println("Puede moverse a "+ ""+letra+hola);
                 }
