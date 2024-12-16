@@ -1,0 +1,30 @@
+public static String movimientoAlfil() {
+        String colorAlfil = colorPieza();
+        String posicionAlfil = posicion();
+        char letra = posicionAlfil.charAt(0);
+        char num = posicionAlfil.charAt(1);
+        int nume = Character.getNumericValue(num);
+
+        int letraIndice = letra - 'A';
+
+        StringBuilder movPosibles = new StringBuilder();
+
+        for (int i = 1; i < 8; i++) {
+            if (letraIndice - i >= 0 && nume + i <= 8) {
+                movPosibles.append(letras[letraIndice - i]).append(nume + i).append(", ");
+            }
+            if (letraIndice + i < 8 && nume + i <= 8) {
+                movPosibles.append(letras[letraIndice + i]).append(nume + i).append(", ");
+            }
+            if (letraIndice - i >= 0 && nume - i >= 1) {
+                movPosibles.append(letras[letraIndice + i]).append(nume - i).append(", ");
+            }
+            if (letraIndice + i < 8 && nume - i >= 1) {
+                movPosibles.append(letras[letraIndice + i]).append(nume - i).append(", ");
+            }
+        }
+
+        System.out.println("Los posibles movimientos del alfil son: " + movPosibles.toString());
+
+        return movPosibles.toString();
+    }
