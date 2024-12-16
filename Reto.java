@@ -40,7 +40,7 @@ public class Reto {
                     movimientoPeon();
                     break;
                 case "A":
-                    movimientoAlfil(posicion());
+                    movimientoAlfil();
                     break;
                 case "T":
                     movimientoTorre();
@@ -148,9 +148,16 @@ public class Reto {
         return posicion;
     }
 
-    public static String movimientoAlfil (String posicion) {
-
-        return posicion;
+    public static String movimientoAlfil () {
+        String colorTorre=colorPieza();
+        String posicionTorre=posicion();
+        char letra=posicionTorre.charAt(0);
+        char num=posicionTorre.charAt(1);
+        int nume =Character.getNumericValue(num);
+        for (int i=0;i<letras.length;i++){
+            
+        }
+        return " ";
     }
 
     public static String movimientoTorre () {
@@ -159,16 +166,18 @@ public class Reto {
         char letra=posicionTorre.charAt(0);
         char num=posicionTorre.charAt(1);
         int nume =Character.getNumericValue(num);
+        System.out.print("La torre se puede mover a: ");
         for (int i=0;i< letras.length;i++){
             if (letra!=letras[i]){
-                System.out.println("La torre se puede mover a: "+letras[i]+" "+num);
+                System.out.print(" "+letras[i]+num+ " ");
             }
         }
         for (int j=0;j<numeros.length;j++){
             if (nume!=numeros[j]){
-                System.out.println("La torre se puede mover a: "+letra+" "+numeros[j]);
+                System.out.print(" "+letra+numeros[j]+" ");
             }
         }
+        System.out.println();
         return " ";
     }
     public static String movimientoCaballo (String posicion) {
@@ -206,4 +215,3 @@ public class Reto {
         return posicionValida;
     }
 }
-
