@@ -284,17 +284,14 @@ public class TodoJuntoJuanCarlos {
             }
         }
 
-        System.out.print("Desde " + posicion + " los posibles movimientos son: ");
-
+        String quitarComa = "";
         for (int i = 0; i < moverLetra.length; i++) {
             int letraFinal = indiceLetra + moverLetra[i];
             int numerofinal = indiceNumero + moverNumero[i];
 
             if (letraFinal >= 0 && letraFinal < 8 && numerofinal >= 0 && numerofinal < 8) {
-                System.out.print(arrayLetra[letraFinal] + "" + arrayNumero[numerofinal]);
-                if (i < moverLetra.length - 1) {
-                    System.out.print(", ");
-                }
+                System.out.print(quitarComa + arrayLetra[letraFinal] + arrayNumero[numerofinal]);
+                quitarComa = ", ";
             }
         }
 
@@ -323,17 +320,14 @@ public class TodoJuntoJuanCarlos {
             }
         }
 
-        System.out.print("Desde " + posicion + " los posibles movimientos son: ");
-
+        String quitarComa = "";
         for (int i = 0; i < moverLetra.length; i++) {
             int letraFinal = indiceLetra + moverLetra[i];
             int numerofinal = indiceNumero + moverNumero[i];
 
             if (letraFinal >= 0 && letraFinal < 8 && numerofinal >= 0 && numerofinal < 8) {
-                System.out.print(arrayLetra[letraFinal] + "" + arrayNumero[numerofinal]);
-                if (i < moverLetra.length - 1) {
-                    System.out.print(", ");
-                }
+                System.out.print(quitarComa + arrayLetra[letraFinal] + arrayNumero[numerofinal]);
+                quitarComa = ", ";
             }
         }
 
