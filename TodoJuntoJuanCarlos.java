@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
 public class TodoJuntoJuanCarlos {
-    static char[] letras = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-    static int[] numeros = {1, 2, 3, 4, 5, 6, 7, 8};
+
     public static void main(String[] args) {
 
         System.out.println("|--------------------------------------|");
@@ -61,19 +60,22 @@ public class TodoJuntoJuanCarlos {
         }
 
     }
+
+
     public static String posicion(){
         System.out.println("Indica la posicion de tu ficha: ");
         Scanner sc=new Scanner(System.in);
         String posi=sc.nextLine();
+        String posiMayus = posi.toUpperCase();
         do {
-            if (validarPosicion(posi)){
-                return posi;
+            if (validarPosicion(posiMayus)){
+                return posiMayus;
             }else {
                 System.out.println("Pon una posición válida:");
-                posi=sc.nextLine();
+                posiMayus=sc.nextLine();
             }
-        }while (!validarPosicion(posi));
-        return posi;
+        }while (!validarPosicion(posiMayus));
+        return posiMayus;
     }
 
     public static String colorPieza (){
@@ -171,15 +173,14 @@ public class TodoJuntoJuanCarlos {
 
         System.out.print("Desde " + posicion + " los posibles movimientos son: ");
 
+        String quitarComa = "";
         for (int i = 0; i < moverLetra.length; i++) {
             int letraFinal = indiceLetra + moverLetra[i];
             int numerofinal = indiceNumero + moverNumero[i];
 
             if (letraFinal >= 0 && letraFinal < 8 && numerofinal >= 0 && numerofinal < 8) {
-                System.out.print(arrayLetra[letraFinal] + "" + arrayNumero[numerofinal]);
-                if (i < moverLetra.length - 1) {
-                    System.out.print(", ");
-                }
+                System.out.print(quitarComa + arrayLetra[letraFinal] + arrayNumero[numerofinal]);
+                quitarComa = ", ";
             }
         }
 
@@ -210,15 +211,14 @@ public class TodoJuntoJuanCarlos {
 
         System.out.print("Desde " + posicion + " los posibles movimientos de la torre son: ");
 
+        String quitarComa = "";
         for (int i = 0; i < moverLetra.length; i++) {
             int letraFinal = indiceLetra + moverLetra[i];
             int numerofinal = indiceNumero + moverNumero[i];
 
             if (letraFinal >= 0 && letraFinal < 8 && numerofinal >= 0 && numerofinal < 8) {
-                System.out.print(arrayLetra[letraFinal] + "" + arrayNumero[numerofinal]);
-                if (i < moverLetra.length - 1) {
-                    System.out.print(", ");
-                }
+                System.out.print(quitarComa + arrayLetra[letraFinal] + arrayNumero[numerofinal]);
+                quitarComa = ", ";
             }
         }
 
@@ -234,6 +234,44 @@ public class TodoJuntoJuanCarlos {
         int indiceNumero = -1;
         int[] moverLetra = {-2, -1, 1, 2, -2, -1, 1, 2};
         int[] moverNumero = {1, 2, 2, 1, -1, -2, -2, -1};
+
+        for (int i = 0; i < arrayLetra.length; i++) {
+            if (arrayLetra[i] == letraPosicion) {
+                indiceLetra = i;
+            }
+        }
+        for (int i = 0; i < arrayNumero.length; i++) {
+            if (arrayNumero[i] == numeroPosicion) {
+                indiceNumero = i;
+            }
+        }
+
+        System.out.print("Desde " + posicion + " los posibles movimientos son: ");
+
+        String quitarComa = "";
+        for (int i = 0; i < moverLetra.length; i++) {
+            int letraFinal = indiceLetra + moverLetra[i];
+            int numerofinal = indiceNumero + moverNumero[i];
+
+            if (letraFinal >= 0 && letraFinal < 8 && numerofinal >= 0 && numerofinal < 8) {
+                System.out.print(quitarComa + arrayLetra[letraFinal] + arrayNumero[numerofinal]);
+                quitarComa = ", ";
+            }
+        }
+
+        System.out.println();
+        return "";
+    }
+
+    public static String movimientoReina (String posicion) {
+        char[] arrayLetra = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+        char[] arrayNumero = {'1', '2', '3', '4', '5', '6', '7', '8'};
+        char letraPosicion = posicion.charAt(0);
+        char numeroPosicion = posicion.charAt(1);
+        int indiceLetra = -1;
+        int indiceNumero = -1;
+        int[] moverLetra = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6, 7, -1, -1, 1, 1, -2, -2, 2, 2,-3, -3, 3, 3, -4, -4, 4, 4, -5, -5, 5, 5, -6, -6, 6, 6, -7, -7, 7, 7};
+        int[] moverNumero = {1, 2, 3, 4, 5, 6, 7, -1, -2, -3, -4, -5, -6, -7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 1, 1, -1, -2, 2, 2, -2, -3, 3, 3, -3, -4, 4, 4, -4, -5, 5, 5, -5, -6, 6, 6, -6, -7, 7, 7, -7};
 
         for (int i = 0; i < arrayLetra.length; i++) {
             if (arrayLetra[i] == letraPosicion) {
@@ -264,13 +302,7 @@ public class TodoJuntoJuanCarlos {
         return "";
     }
 
-    public static String movimientoReina (String posicion) {
-
-        return posicion;
-    }
-
     public static String movimientoRey (String posicion) {
-
         char[] arrayLetra = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
         char[] arrayNumero = {'1', '2', '3', '4', '5', '6', '7', '8'};
         char letraPosicion = posicion.charAt(0);
