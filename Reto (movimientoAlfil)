@@ -24,6 +24,15 @@ public static String movimientoAlfil() {
             }
         }
 
+        // Este bucle verifica si movPosibles tiene contenido.
+        // Elimina la coma del final para que el formato quede correcto.
+        // El método substring elimina los dos últimos caracteres de la cadena para que
+        // no quede una coma al final de la última coordenada.
+        if (movPosibles.length() > 0) {
+            movPosibles = movPosibles.substring(0, movPosibles.length() - 2);
+        }
+        
+
         System.out.println("Los posibles movimientos del alfil son: " + movPosibles);
 
         return movPosibles;
