@@ -7,24 +7,24 @@ public static String movimientoAlfil() {
 
         int letraIndice = letra - 'A';
 
-        StringBuilder movPosibles = new StringBuilder();
+        String movPosibles = "";
 
         for (int i = 1; i < 8; i++) {
             if (letraIndice - i >= 0 && nume + i <= 8) {
-                movPosibles.append(letras[letraIndice - i]).append(nume + i).append(", ");
+                movPosibles += letras[letraIndice - i] + Integer.toString(nume + i) + ", ";
             }
             if (letraIndice + i < 8 && nume + i <= 8) {
-                movPosibles.append(letras[letraIndice + i]).append(nume + i).append(", ");
+                movPosibles += letras[letraIndice + i] + Integer.toString(nume + i) + ", ";
             }
             if (letraIndice - i >= 0 && nume - i >= 1) {
-                movPosibles.append(letras[letraIndice + i]).append(nume - i).append(", ");
+                movPosibles += letras[letraIndice - i] + Integer.toString(nume - i) + ", ";
             }
             if (letraIndice + i < 8 && nume - i >= 1) {
-                movPosibles.append(letras[letraIndice + i]).append(nume - i).append(", ");
+                movPosibles += letras[letraIndice + i] + Integer.toString(nume - i) + ", ";
             }
         }
 
-        System.out.println("Los posibles movimientos del alfil son: " + movPosibles.toString());
+        System.out.println("Los posibles movimientos del alfil son: " + movPosibles);
 
-        return movPosibles.toString();
+        return movPosibles;
     }
